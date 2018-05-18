@@ -2,7 +2,7 @@
 Nodejs wrapper for palitanx.com
 
 
-[![NPM](https://nodei.co/npm/node-palitanx-api.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/node-palitanx-api/)
+[![NPM](https://nodei.co/npm/palitanx-api.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/palitanx-api/)
 
 ## API Implementation
 
