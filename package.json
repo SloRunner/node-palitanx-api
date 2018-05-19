@@ -1,6 +1,6 @@
 {
   "name": "palitanx-api",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Api for Palitanx exchange",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,13 @@
   "dependencies": {
     "request": "^2.86.0"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SloRunner/node-palitanx-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SloRunner/node-palitanx-api/issues"
+  },
+  "homepage": "https://github.com/SloRunner/node-palitanx-api#readme"
 }

@@ -7,7 +7,7 @@ Nodejs wrapper for palitanx.com
 ## API Implementation
 
 ```javascript
-const Palitanx = require('node-palitanx-api');
+const Palitanx = require('palitanx-api');
 const palitanx = new Palitanx();
 ```
 
@@ -23,7 +23,7 @@ getMarketSummary(market) - example getMarketSummary('BTC-CIV')
 
 Examples:
 ```javascript
-const Palitanx = require('node-palitanx-api');
+const Palitanx = require('palitanx-api');
 const palitanx = new Palitanx();
 palitanx.getMarketSummary('BTC-CIV', function(data){
 	console.log(data)
