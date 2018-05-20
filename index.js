@@ -9,48 +9,53 @@ module.exports = class Palitanx {
     	this.apiurl = 'https://api.palitanx.com/v1/';
     }
 
-    getMarkets() {
-    	browser(this.apiurl + 'public/getmarkets', { json: true }, function(err, res, body) {
-    		if (err) { 
-    			return err;
-    		}
-    		return body;
+    getMarkets(callback) {
+    	browser(this.apiurl + 'public/getmarkets', { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
     	})
     }
 
-    getCurrencies() {
-    	browser(this.apiurl + 'public/getcurrencies', { json: true }, function(err, res, body) {
-    		if (err) { 
-    			return err;
-    		}
-    		return body;
+    getCurrencies(callback) {
+    	browser(this.apiurl + 'public/getcurrencies', { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
     	})
     }
 
-    getTicker(market) {
-    	browser(this.apiurl + 'public/getticker/' + market, { json: true }, function(err, res, body) {
-    		if (err) { 
-    			return err;
-    		}
-    		return body;
+    getTicker(market, callback) {
+    	browser(this.apiurl + 'public/getticker/' + market, { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
     	})
     }
 
-    getMarketSummaries() {
-    	browser(this.apiurl + 'public/getcurrencies', { json: true }, function(err, res, body) {
-    		if (err) { 
-    			return err;
-    		}
-    		return console.log(body);
+    getMarketSummaries(callback) {
+    	browser(this.apiurl + 'public/getcurrencies', { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
     	})
     }
 
-    getMarketSummary(market) {
-    	browser(this.apiurl + 'public/getmarketsummary/' + market, { json: true }, function(err, res, body) {
-    		if (err) { 
-    			return err;
-    		}
-    		return console.log(body);
+    getMarketSummary(market, callback) {
+    	browser(this.apiurl + 'public/getmarketsummary/' + market, { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
     	})
     }
 }
