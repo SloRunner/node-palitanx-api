@@ -40,7 +40,7 @@ module.exports = class Palitanx {
     }
 
     getMarketSummaries(callback) {
-    	browser(this.apiurl + 'public/getcurrencies', { json: true }, function(error, res, body) {
+    	browser(this.apiurl + 'public/getmarketsummaries', { json: true }, function(error, res, body) {
             if (!error && res.statusCode == 200) {
                 callback(false, body)
             } else {
