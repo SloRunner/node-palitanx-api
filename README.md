@@ -2,6 +2,7 @@
 Nodejs wrapper for palitanx.com
 
 [![Build Status](https://travis-ci.org/SloRunner/node-palitanx-api.svg?branch=master)](https://travis-ci.org/SloRunner/node-palitanx-api)
+
 [![NPM](https://nodei.co/npm/palitanx-api.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/palitanx-api/)
 
 ## API Implementation
