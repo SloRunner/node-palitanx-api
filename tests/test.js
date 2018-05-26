@@ -44,10 +44,30 @@ describe('getMarketSummaries() test', function () {
 
 describe('getMarketSummary() test', function () {
   it('it should download market summary as object without error', function () {
-  	palitanx.getMarketSummary('BTC-CIV', function(err, data){
-  		expect(err).to.be.a('boolean');
-  		expect(err).to.be.equal(false);
-  		expect(data).to.be.a('object');
-  	})
+    palitanx.getMarketSummary('BTC-CIV', function(err, data){
+      expect(err).to.be.a('boolean');
+      expect(err).to.be.equal(false);
+      expect(data).to.be.a('object');
+    })
+  });
+});
+
+describe('getOrderBook() test', function () {
+  it('it should download Order Book as object without error', function () {
+    palitanx.getOrderBook('BTC-CIV', 'both', function(err, data){
+      expect(err).to.be.a('boolean');
+      expect(err).to.be.equal(false);
+      expect(data).to.be.a('object');
+    })
+  });
+});
+
+describe('getMarketHistory() test', function () {
+  it('it should download market history as object without error', function () {
+    palitanx.getMarketHistory('BTC-CIV', function(err, data){
+      expect(err).to.be.a('boolean');
+      expect(err).to.be.equal(false);
+      expect(data).to.be.a('object');
+    })
   });
 });

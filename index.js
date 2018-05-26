@@ -1,7 +1,7 @@
 'use strict'
 const request = require('request')
 var browser = request.defaults({
-  headers: {'User-Agent': 'The Botfather NodeJS module'}
+  headers: {'User-Agent': 'The Botfather NodeJS module (https://www.npmjs.com/package/palitanx-api)'}
 })
 
 module.exports = class Palitanx {
@@ -50,12 +50,32 @@ module.exports = class Palitanx {
     }
 
     getMarketSummary(market, callback) {
-    	browser(this.apiurl + 'public/getmarketsummary/' + market, { json: true }, function(error, res, body) {
+        browser(this.apiurl + 'public/getmarketsummary/' + market, { json: true }, function(error, res, body) {
             if (!error && res.statusCode == 200) {
                 callback(false, body)
             } else {
                 callback(true, "")
             }
-    	})
+        })
+    }
+
+    getOrderBook(market, type, callback) {
+        browser(this.apiurl + 'public/getorderbook/' + market + '/' + type, { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getMarketHistory(market, callback) {
+        browser(this.apiurl + 'public/getmarkethistory/' + market, { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
     }
 }

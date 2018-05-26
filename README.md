@@ -16,9 +16,11 @@ Methods:
 ```javascript
 getMarkets(callback)
 getCurrencies(callback)
-getTicker(market, callback) - example getTicker('BTC-CIV')
+getTicker(market, callback) - example getTicker('BTC-CIV', function)
 getMarketSummaries(callback)
-getMarketSummary(market, callback) - example getMarketSummary('BTC-CIV')
+getMarketSummary(market, callback) - example getMarketSummary('BTC-CIV', function)
+getOrderBook(market, type, callback) - example getOrderBook('BTC-CIV', 'both', function...)
+getMarketHistory(market, callback) - example getMarketSummary('BTC-CIV', function)
 ```
 
 Examples:
