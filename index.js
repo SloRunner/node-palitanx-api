@@ -5,7 +5,9 @@ var browser = request.defaults({
 })
 
 module.exports = class Palitanx {
-    constructor() {
+    constructor(apikey, secret) {
+        this.apikey = apikey || '';
+        this.secret = secret || '';
     	this.apiurl = 'https://api.palitanx.com/v1/';
     }
 
@@ -71,6 +73,207 @@ module.exports = class Palitanx {
 
     getMarketHistory(market, callback) {
         browser(this.apiurl + 'public/getmarkethistory/' + market, { json: true }, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getBalances(callback) {
+        var gen_url = this.apiurl + 'account/getbalances/' + this.apikey + '/' + new Date().getTime()
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getBalance(coin, callback) {
+        var gen_url = this.apiurl + 'account/getbalance/' + this.apikey + '/' + new Date().getTime() + '/' + coin
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getOpenOrders(market, callback) {
+        var gen_url = this.apiurl + 'market/getopenorders/' + this.apikey + '/' + new Date().getTime() + '/' + market
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getOrder(orderID, callback) {
+        var gen_url = this.apiurl + 'market/getorder/' + this.apikey + '/' + new Date().getTime() + '/' + orderID
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    cancelOrder(orderid, callback) {
+        var gen_url = this.apiurl + 'market/cancel/' + this.apikey + '/' + new Date().getTime() + '/' + orderid
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getOrderHistory(market, callback) {
+        if (!market) {
+            var gen_url = this.apiurl + 'market/getorderhistory/' + this.apikey + '/' + new Date().getTime()
+        }else{
+            var gen_url = this.apiurl + 'market/getorderhistory/' + this.apikey + '/' + new Date().getTime() + '/' + market
+        };
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getWithdrawalHistory(coin, callback) {
+        if (!coin) {
+            var gen_url = this.apiurl + 'market/getwithdrawalhistory/' + this.apikey + '/' + new Date().getTime()
+        }else{
+            var gen_url = this.apiurl + 'market/getwithdrawalhistory/' + this.apikey + '/' + new Date().getTime() + '/' + coin
+        };
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    getDepositHistory(coin, callback) {
+        if (!coin) {
+            var gen_url = this.apiurl + 'market/getdeposithistory/' + this.apikey + '/' + new Date().getTime()
+        }else{
+            var gen_url = this.apiurl + 'market/getdeposithistory/' + this.apikey + '/' + new Date().getTime() + '/' + coin
+        };
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+
+    sellLimit(market, quantity, rate, callback) {
+        var gen_url = this.apiurl + 'market/selllimit/' + this.apikey + '/' + new Date().getTime() + '/' + market + '/' + quantity + '/' + rate
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
+            if (!error && res.statusCode == 200) {
+                callback(false, body)
+            } else {
+                callback(true, "")
+            }
+        })
+    }
+    buyLimit(market, quantity, rate, callback) {
+        var gen_url = this.apiurl + 'market/buylimit/' + this.apikey + '/' + new Date().getTime() + '/' + market + '/' + quantity + '/' + rate
+        var hash = crypto.createHmac('sha512', this.secret)
+        hash.update(gen_url)
+        var sign = hash.digest('hex')
+        var options = {
+            url: gen_url,
+            headers: {'apisign': sign},
+            json: true
+        }
+        browser(options, function(error, res, body) {
             if (!error && res.statusCode == 200) {
                 callback(false, body)
             } else {
