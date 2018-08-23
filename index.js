@@ -1,5 +1,7 @@
 'use strict'
 const request = require('request')
+const crypto = require('crypto')
+
 var browser = request.defaults({
   headers: {'User-Agent': 'The Botfather NodeJS module (https://www.npmjs.com/package/palitanx-api)'}
 })
